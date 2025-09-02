@@ -4,6 +4,7 @@ import {
   transformerDirectives,
   transformerVariantGroup,
   presetWind4,
+  presetWebFonts
 } from 'unocss'
 
 const spacing = {
@@ -46,32 +47,25 @@ export default defineConfig({
     },
 
     colors: {
-      background: '#202427',
+      background: '#1c1b1d',
       inherit: 'inherit',
       current: 'currentColor',
       transparent: 'transparent',
       black: '#000',
       white: '#fff',
 
-      gray: {
-        bg: '#333645',
-        text: '#9c9ca4',
+      point: {
+        entrance: '#688a68ff',
+        leave: '#a86a6aff'
       },
-
-      dark: {
-        primary: '#292D36',
-        secondary: '#23272B',
-        card: '#252628',
-      },
-      download: '#81aa7b',
       positive: '#21BA45',
       negative: '#F56C6C',
       info: '#31CCEC',
       warning: '#F2C037',
       cancel: '#767981',
 
-      primary: '#4599C8',
-      secondary: '#A4C2E4',
+      primary: '#45455a',
+      secondary: '#553f5d',
       accent: '#3D3E43',
     },
 
@@ -160,6 +154,25 @@ export default defineConfig({
         color: '',
       },
       warn: true,
+    }),
+    presetWebFonts({
+      provider: 'google',
+      fonts: {
+        nunito: [
+          {
+            name: 'Nunito',
+            weights: [ '400', '700', '800', '900' ],
+            italic: true,
+          },
+        ],
+        poppins: [
+          {
+            name: 'Poppins',
+            weights: [ '400', '700', '800', '900' ],
+            italic: true,
+          },
+        ],
+      },
     }),
   ],
 

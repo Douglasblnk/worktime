@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "WorkTime",
+  "version": "1.0",
+  "description": "A Chrome extension to track and manage work hours.",
+  "permissions": [
+    "storage",
+    "tabs"
+  ],
+  "action": {
+    "default_popup": "index.html",
+    "default_icon": {
+      "16": "worktime.png",
+      "48": "worktime.png",
+      "128": "worktime.png"
+    }
+  },
+  "icons": {
+    "16": "worktime.png",
+    "48": "worktime.png",
+    "128": "worktime.png"
+  }
+}
