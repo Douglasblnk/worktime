@@ -40,7 +40,7 @@ function getType(index: number) {
       <div class="flex items-center gap-sm bg-point-entrance/20 rounded-full border-1 border-solid border-[#ffffff14] px-sm">
         <i class="i-mdi-timer-plus text-lg" />
 
-        <span class="text-lg font-bold font-poppins">
+        <span v-if="!resume.isLoading.value" class="text-lg font-bold font-poppins">
           {{ dayjs.duration(resume.data.value.statuses.time_balance, "seconds").format('HH:mm') }}
         </span>
       </div>
