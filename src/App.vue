@@ -21,7 +21,7 @@ const points = computed(() => {
   return workDay.data.value?.work_day?.time_cards
 })
 
-const { tolerance } = useTolerance(points)
+const { tolerance, timeLeft } = useTolerance(points)
 
 function getType(index: number) {
   return isOdd(index)
@@ -37,12 +37,22 @@ function getType(index: number) {
 
       <CustomTitle text="Worktime" class="text-2xl font-bold font-poppins" />
 
-      <div class="flex items-center gap-sm bg-point-entrance/20 rounded-full border-1 border-solid border-[#ffffff14] px-sm">
-        <i class="i-mdi-timer-plus text-lg" />
-
-        <span v-if="!resume.isLoading.value" class="text-lg font-bold font-poppins">
-          {{ dayjs.duration(resume.data.value.statuses.time_balance, "seconds").format('HH:mm') }}
-        </span>
+      <div class="flex items-center gap-sm">
+        <div class="flex items-center gap-sm bg-point-entrance/20 rounded-full border-1 border-solid border-[#ffffff14] px-sm">
+          <i class="i-mdi-timer-plus text-lg" />
+  
+          <span v-if="!resume.isLoading.value" class="text-lg font-bold font-poppins">
+            {{ dayjs.duration(resume.data.value.statuses.time_balance, "seconds").format('HH:mm') }}
+          </span>
+        </div>
+  
+        <div class="flex items-center gap-sm bg-warning/20 rounded-full border-1 border-solid border-[#ffffff14] px-sm">
+          <i class="i-mdi-timer-sand-complete text-lg" />
+  
+          <span v-if="!resume.isLoading.value" class="text-lg font-bold font-poppins">
+            {{ timeLeft }}
+          </span>
+        </div>
       </div>
 
       <div v-if="workDay.error.value || resume.error.value" class="flex items-center gap-sm">
