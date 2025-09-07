@@ -50,7 +50,7 @@ export default function (points: MaybeRef<IPoints.Timecards[]>) {
     const entrance = dayjs(unrefPoints[0].time, 'HH:mm')
     const lunchStart = unrefPoints[1] ? dayjs(unrefPoints[1].time, 'HH:mm') : null
     const lunchEnd = unrefPoints[2] ? dayjs(unrefPoints[2].time, 'HH:mm') : null
-    const now = dayjs('15:24', 'HH:mm')
+    const now = dayjs()
 
     const entranceDiff = dayjs(entrance, 'HH:mm').diff(now, 'm')
     
