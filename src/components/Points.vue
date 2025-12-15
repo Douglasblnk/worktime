@@ -46,7 +46,7 @@ function handleTooltipOff() {
 
 <template>
   <div
-    class="w-full px-3 py-2 rounded-full flex gap-xs justify-center items-center border-1 border-solid border-[#ffffff14]"
+    class="px-3 py-2 rounded-full flex gap-xs justify-center items-center border-1 border-solid border-[#ffffff14]"
     :class="[type && typeColor, props.small ? '!px-2 !py-1' : '']"
     @mouseenter="handleTooltipOn"
     @mouseleave="handleTooltipOff"

@@ -111,7 +111,7 @@ function getType(index: number) {
 
       <Card
         icon="i-mdi-calendar-week"
-        :title="`Pontos da semana (${dayjs().startOf('week').format('DD/MM')} - ${dayjs().endOf('week').format('DD/MM')})`"
+        :title="`Pontos da semana (${dayjs().startOf('week').add(1, 'd').format('DD/MM')} - ${dayjs().endOf('week').subtract(1, 'd').format('DD/MM')})`"
         :is-loading="workWeek.isLoading.value"
       >
         <div v-if="weekPoints.length === 0" class="text-sm">
