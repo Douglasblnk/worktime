@@ -118,9 +118,7 @@ function getType(index: number) {
           Nenhum ponto registrado
         </div>
   
-        <template v-else>
-          <WeekPoints :points="weekPoints" />
-        </template>
+        <WeekPoints v-else :points="weekPoints" />
       </Card>
     </template>
   </div>

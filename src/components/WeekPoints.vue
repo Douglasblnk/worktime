@@ -21,11 +21,13 @@ const filterPoints = computed(() => {
 </script>
 
 <template>
-  <div class="flex flex-col gap-sm w-full">
+  <div class="flex flex-col gap-sm w-full relative mt-5">
     <div
       v-for="day in filterPoints"
       :key="day?.date"
-      class="flex flex-col gap-md bg-primary/40 w-full px-md py-sm rounded-xl"
+      class="flex flex-col gap-md bg-#2e2d38 w-full px-md py-sm rounded-xl"
+      style="box-shadow: 0px -10px 30px -20px black;"
+      :class="day.date === dayjs().format('YYYY-MM-DD') ? 'scale-92 absolute top--6 z-0' : 'z-10'"
     >
       <div class="flex justify-between gap-xs">
         <div class="font-semibold text-sm">
