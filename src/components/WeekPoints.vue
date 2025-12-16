@@ -16,7 +16,7 @@ function getType(index: number) {
 }
 
 const filterPoints = computed(() => {
-  return props.points.filter(day => day.time_cards.length > 0 && day.date !== dayjs().format('YYYY-MM-DD'))
+  return props.points.filter(day => day.time_cards.length > 0)
 })
 </script>
 
@@ -52,6 +52,7 @@ const filterPoints = computed(() => {
           :type="getType(index + 1)"
           :hour="point.time"
           small
+          :class="day.time_cards.length >= 4 ? 'w-full' : ''"
         />
       </div>
     </div>
