@@ -39,10 +39,12 @@ function getType(index: number) {
 
 <template>
   <div class="flex flex-col gap-sm">
-    <div class="p-5 flex flex-col items-center gap-sm justify-center">
-      <i class="i-mdi-briefcase text-3xl" />
-
-      <CustomTitle text="Worktime" class="text-2xl font-bold font-poppins" />
+    <div class="p-5 flex flex-col items-center gap-md justify-center">
+      <div class="flex items-center gap-sm">
+        <i class="i-mdi-briefcase text-3xl" />
+  
+        <CustomTitle text="Worktime" class="text-2xl font-bold font-poppins" />
+      </div>
 
       <div class="flex items-center gap-sm">
         <div class="flex items-center gap-sm bg-point-entrance/20 rounded-full border-1 border-solid border-[#ffffff14] px-sm">
