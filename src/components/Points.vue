@@ -5,6 +5,7 @@ const props = defineProps<{
   type?: 'entrance' | 'leave'
   hour: string
   small?: boolean
+  hideTooltip?: boolean
 }>()
 
 const typeIcon = computed(() => {
@@ -28,6 +29,8 @@ const typeText = {
 }
 
 function handleTooltipOn(value: MouseEvent) {
+  if (props.hideTooltip) return
+
   const { clientX, clientY } = value
   tooltipStyle.value = {
     position: 'fixed',
@@ -39,6 +42,8 @@ function handleTooltipOn(value: MouseEvent) {
 }
 
 function handleTooltipOff() {
+  if (props.hideTooltip) return
+  
   tooltipStyle.value = {}
   tooltipModel.value[props.hour] = false
 }
@@ -56,7 +61,7 @@ function handleTooltipOff() {
 
     <Transition name="fade-in" mode="out-in">
       <div
-        v-if="tooltipModel[hour]"
+        v-if="!hideTooltip && tooltipModel[hour]"
         :style="tooltipStyle"
         class="bg-primary/40 px-md py-2 backdrop-blur rounded-full absolute pointer-events-none z-1"
       >

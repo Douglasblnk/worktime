@@ -54,6 +54,7 @@ const filterPoints = computed(() => {
           :type="getType(index + 1)"
           :hour="point.time"
           small
+          hide-tooltip
           :class="day.time_cards.length >= 4 ? 'w-full' : ''"
         />
       </div>
