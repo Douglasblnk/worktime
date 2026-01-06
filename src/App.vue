@@ -28,6 +28,24 @@ const weekPoints = computed(() => {
   return workWeek.data.value?.work_days
 })
 
+const balance = computed(() => {
+  const duration = dayjs.duration(resume.data.value.statuses.time_balance, "seconds")
+
+  if (duration.asMilliseconds() < 0) {
+    return {
+      type: 'negative',
+      time: `${duration.hours()}h ${duration.minutes()}m`
+    }
+  }
+
+  else {
+    return {
+      type: 'positive',
+      time: `${duration.hours()}h ${duration.minutes()}m`
+    }
+  }
+})
+
 const { tolerance, timeLeft } = useTolerance(points)
 
 function getType(index: number) {
@@ -47,11 +65,14 @@ function getType(index: number) {
       </div>
 
       <div class="flex items-center gap-sm">
-        <div class="flex items-center gap-sm bg-point-entrance/20 rounded-full border-1 border-solid border-[#ffffff14] px-sm">
-          <i class="i-mdi-timer-plus text-lg" />
-  
-          <span v-if="!resume.isLoading.value" class="text-lg font-bold font-poppins">
-            {{ dayjs.duration(resume.data.value.statuses.time_balance, "seconds").format('HH:mm') }}
+        <div
+          class="flex items-center gap-sm bg-point-entrance/20 rounded-full border-1 border-solid border-[#ffffff14] px-sm"
+          :class="balance.type === 'positive' ? 'bg-point-entrance/20' : 'bg-point-leave/20'"
+        >
+          <i :class="balance.type === 'positive' ? 'i-mdi-timer-plus' : 'i-mdi-timer-minus'" un-text-lg />
+
+          <span v-if="!resume.isLoading.value" class="text-lg font-bold font-poppins" :class="balance.type === 'negative' ? 'text-point-leave' : ''">
+            {{ balance.time.replace(/(.-)/g, ' ') }}
           </span>
         </div>
   

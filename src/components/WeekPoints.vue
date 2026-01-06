@@ -21,13 +21,13 @@ const filterPoints = computed(() => {
 </script>
 
 <template>
-  <div class="flex flex-col gap-sm w-full relative mt-5">
+  <div class="flex flex-col gap-sm w-full relative" :class="filterPoints.length > 1 ? 'mt-5' : ''">
     <div
       v-for="day in filterPoints"
       :key="day?.date"
       class="flex flex-col gap-md bg-#2e2d38 w-full px-md py-sm rounded-xl"
       style="box-shadow: 0px -10px 30px -20px black;"
-      :class="day.date === dayjs().format('YYYY-MM-DD') ? 'scale-92 absolute top--6 z-0' : 'z-10'"
+      :class="(day.date === dayjs().format('YYYY-MM-DD') && filterPoints.length > 1) ? 'scale-92 absolute top--6 z-0' : 'z-10'"
     >
       <div class="flex justify-between gap-xs">
         <div class="font-semibold text-sm">
@@ -42,6 +42,17 @@ const filterPoints = computed(() => {
   
           <span class="text-xs font-bold font-poppins">
             {{ dayjs.duration(day.extra_time, 'seconds').format('HH:mm') }}
+          </span>
+        </div>
+
+        <div
+          class="flex items-center gap-sm bg-point-leave/20 rounded-full border-1 border-solid border-[#ffffff14] px-sm"
+          :class="day.missing_time > 0 ? '' : 'hidden'"
+        >
+          <i class="i-mdi-timer-minus text-xs" />
+  
+          <span class="text-xs font-bold font-poppins">
+            {{ dayjs.duration(day.missing_time, 'seconds').format('HH:mm') }}
           </span>
         </div>
       </div>
