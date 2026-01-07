@@ -29,7 +29,7 @@ const weekPoints = computed(() => {
 })
 
 const balance = computed(() => {
-  const duration = dayjs.duration(resume.data.value.statuses.time_balance, "seconds")
+  const duration = dayjs.duration(resume.data.value?.statuses?.time_balance, "seconds")
 
   if (duration.asMilliseconds() < 0) {
     return {
