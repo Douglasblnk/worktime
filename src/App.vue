@@ -69,7 +69,7 @@ function getType(index: number) {
           class="flex items-center gap-sm bg-point-entrance/20 rounded-full border-1 border-solid border-[#ffffff14] px-sm"
           :class="balance.type === 'positive' ? 'bg-point-entrance/20' : 'bg-point-leave/20'"
         >
-          <i :class="balance.type === 'positive' ? 'i-mdi-timer-plus' : 'i-mdi-timer-minus'" un-text-lg />
+          <i :class="balance.type === 'positive' ? 'i-mdi-timer-plus' : 'i-mdi-timer-minus'" class="text-lg" />
 
           <span v-if="!resume.isLoading.value" class="text-lg font-bold font-poppins" :class="balance.type === 'negative' ? 'text-point-leave' : ''">
             {{ balance.time.replace(/(.-)/g, ' ') }}
